@@ -1,7 +1,13 @@
+import {OutlineButton} from './components/button'
 
 function App() {
   return (
-    <h1>Hello World</h1>
+   <div>
+      <OutlineButton  />
+      <OutlineButton />
+      <OutlineButton />
+      <OutlineButton />
+   </div>
   );
 }
 
