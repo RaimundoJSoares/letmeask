@@ -1,14 +1,8 @@
-import {OutlineButton} from './components/button'
+import {Home} from "./pages/Home";
 
 function App() {
   return (
-   <div>
-      <OutlineButton  />
-      <OutlineButton />
-      <OutlineButton />
-      <OutlineButton />
-   </div>
+    <Home />
   );
 }
-
 export default App;
