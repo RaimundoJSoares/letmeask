@@ -1,6 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import {auth, firebase} from '../services/firebase'
-
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
@@ -8,21 +6,20 @@ import googleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/button";
 
 import '../styles/auth.scss'
+import { useAuth } from '../hooks/useAuth';
+
 
 export function Home() {
   const history = useNavigate(); // não mais useHistory
+  const{user, signInWithGoogle} = useAuth()
 
-  function navigateToNewRoom(){
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider).then(result =>{
-      console.log(result)
-
-      history('/rooms/new')
-    }); //abre o login do google como um popup na tela
-
-   
+  async function navigateToNewRoom(){
+    if(!user){
+      await signInWithGoogle()
+    }
+  
+      history('/rooms/new')  //abre o login do google como um popup na tela
   }
-
   return (
     <div id="page-auth">
       <aside>
