@@ -24,8 +24,8 @@ export function NewRoom() {
 
   const roomRef = database.ref('rooms');
 
-  const firebaseRoom = await roomRef.push({
-    title: newRoom,
+  const firebaseRoom = await roomRef.push({ //quando for salvar informação dentro de uma lista, uso push
+    title: newRoom,                         //se não for lista, use .set ao invés de push
     authorId: user?.id,
   })
 
